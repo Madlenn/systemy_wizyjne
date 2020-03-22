@@ -17,10 +17,12 @@ public class MyFrame extends JFrame {
         setSize(800, 1000);
         setLocation(50, 50);
         setLayout(new FlowLayout(FlowLayout.RIGHT));
-        add(new JButton("pobierz"));
-        add(new JLabel());
+        JButton pobierz = new JButton("pobierz");
+        add(pobierz);
+        JLabel label = new JLabel();
+        add(label);
 
-        JButton.addActionListener(new ActionListener() {
+        pobierz.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 JFileChooser file = new JFileChooser();
@@ -31,7 +33,7 @@ public class MyFrame extends JFrame {
                 if(result == JFileChooser.APPROVE_OPTION){
                     File selectedFile = file.getSelectedFile();
                     String path = selectedFile.getAbsolutePath();
-                    JLabel.setIcon(ReasizeImage());
+                    label.setIcon(ReasizeImage(null));
                 }
                 else if(result==JFileChooser.CANCEL_OPTION){
                     System.out.println("No FIle Select");
@@ -45,7 +47,7 @@ public class MyFrame extends JFrame {
     public ImageIcon ReasizeImage(String ImagePath){
       ImageIcon MyImage = new ImageIcon(ImagePath);
         Image img = MyImage.getImage();
-        Image newImg = img.getScaledInstance(JLabel.getWitdh(), JLabel.getHight(), Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(400 ,300  , Image.SCALE_SMOOTH);
         ImageIcon image = new ImageIcon(newImg);
         return image;
     };

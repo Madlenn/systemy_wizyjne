@@ -27,13 +27,13 @@ public class MyFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JFileChooser file = new JFileChooser();
                 file.setCurrentDirectory(new File(System.getProperty("user.home")));
-                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpg");
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("*.Images","jpeg");
                 file.addChoosableFileFilter(filter);
                 int result = file.showSaveDialog(null);
                 if(result == JFileChooser.APPROVE_OPTION){
                     File selectedFile = file.getSelectedFile();
                     String path = selectedFile.getAbsolutePath();
-                    label.setIcon(ReasizeImage(null));
+                    label.setIcon(ReasizeImage(path));
                 }
                 else if(result==JFileChooser.CANCEL_OPTION){
                     System.out.println("No FIle Select");
